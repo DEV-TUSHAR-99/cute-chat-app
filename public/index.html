@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Cute Chat - Secure 1-to-1 Messaging</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Star Shower Background -->
+    <canvas id="starCanvas" class="star-canvas"></canvas>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span class="text" id="themeText">Dark</span>
+    </button>
+
+    <!-- Animation Selector -->
+    <div class="animation-selector" id="animationSelector">
+        <button class="anim-toggle" onclick="toggleAnimMenu()">✨</button>
+        <div class="anim-menu hidden" id="animMenu">
+            <div class="anim-option active" onclick="setAnimation('stars')">⭐ Stars</div>
+            <div class="anim-option" onclick="setAnimation('hearts')">💕 Floating Hearts</div>
+            <div class="anim-option" onclick="setAnimation('bubbles')">🫧 Chat Bubbles</div>
+            <div class="anim-option" onclick="setAnimation('particles')">✨ Light Particles</div>
+            <div class="anim-option" onclick="setAnimation('waves')">🌊 Gradient Waves</div>
+            <div class="anim-option" onclick="setAnimation('mixed')">🎨 All Mixed</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="landing-page">
+            <div class="logo">
+                <span class="heart">💕</span>
+                <h1>Cute Chat</h1>
+            </div>
+            <p class="tagline">Secure & Private 1-to-1 Messaging</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="icon">🔒</span>
+                    <span>End-to-End Secure</span>
+                </div>
+                <div class="feature">
+                    <span class="icon">👥</span>
+                    <span>Only 2 Users</span>
+                </div>
+                <div class="feature">
+                    <span class="icon">🔑</span>
+                    <span>Token Access</span>
+                </div>
+            </div>
+            
+            <!-- Chat Preview -->
+            <div class="chat-preview">
+                <div class="preview-header">
+                    <div class="preview-avatar">💕</div>
+                    <div class="preview-info">
+                        <span class="preview-name">Cute Chat</span>
+                        <span class="preview-status">online</span>
+                    </div>
+                </div>
+                <div class="preview-messages" id="previewMessages">
+                    <div class="preview-message received">
+                        <span class="preview-text">Hey! 👋</span>
+                        <span class="preview-time">9:41</span>
+                    </div>
+                    <div class="preview-message sent">
+                        <span class="preview-text">Hi there! 💕</span>
+                        <span class="preview-time">9:41</span>
+                    </div>
+                    <div class="preview-message received">
+                        <span class="preview-text">This is so cute! 🥰</span>
+                        <span class="preview-time">9:42</span>
+                    </div>
+                    <div class="preview-message sent">
+                        <span class="preview-text">Yes! Secure too 🔒</span>
+                        <span class="preview-time">9:42</span>
+                    </div>
+                </div>
+                <div class="preview-input">
+                    <span class="preview-placeholder">Type a message...</span>
+                    <span class="preview-send">➤</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="createRoom()">
+                    <span class="btn-icon">✨</span>
+                    Create New Chat
+                </button>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <div class="join-section">
+                    <input type="text" id="joinLink" placeholder="Enter token number..." class="input">
+                    <button class="btn btn-secondary" onclick="joinFromLink()">
+                        <span class="btn-icon">🔗</span>
+                        Join Chat
+                    </button>
+                </div>
+            </div>
+            
+            <div id="inviteModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="token-box">
+                        <span id="tokenDisplay" class="token-number"></span>
+                        <button class="btn btn-copy" onclick="copyToken()">
+                            <span id="copyIcon">📋</span>
+                            <span id="copyText">Copy</span>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary" onclick="enterChat()">
+                        Enter Chat Room →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="animations.js"></script>
+    <script>
+        // Initialize animation system when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnimations('starCanvas');
+        });
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
