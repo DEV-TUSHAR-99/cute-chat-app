@@ -1,6 +1,6 @@
 // Chat Page JavaScript
 
-const socket = io();
+const socket = io(CONFIG.SERVER_URL);
 let currentRoomId = null;
 let currentUsername = null;
 let isTyping = false;
@@ -73,7 +73,7 @@ if (!roomId) {
 // Verify room before allowing entry
 async function verifyRoom() {
     try {
-        const response = await fetch(`/api/verify-room/${roomId}?token=${joinToken || ''}`);
+        const response = await fetch(`${CONFIG.SERVER_URL}/api/verify-room/${roomId}?token=${joinToken || ''}`);
         const data = await response.json();
         
         if (!data.valid) {

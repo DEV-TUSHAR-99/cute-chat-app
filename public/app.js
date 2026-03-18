@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Create new chat room
 async function createRoom() {
     try {
-        const response = await fetch('/api/create-room', {
+        const response = await fetch(`${CONFIG.SERVER_URL}/api/create-room`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
