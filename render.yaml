@@ -3,8 +3,10 @@ services:
     name: cute-chat-app
     runtime: node
     buildCommand: npm install
-    startCommand: npm start
+    startCommand: node server.js
     envVars:
       - key: NODE_ENV
         value: production
-    healthCheckPath: /
+      - key: PORT
+        value: 10000
+    plan: free
