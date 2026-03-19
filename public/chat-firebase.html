@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure private chat">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>💕 Chat Room</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Star Shower Background -->
+    <canvas id="starCanvas" class="star-canvas"></canvas>
+
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span class="text" id="themeText">Dark</span>
+    </button>
+
+    <!-- Animation Selector -->
+    <div class="animation-selector" id="animationSelector">
+        <button class="anim-toggle" onclick="toggleAnimMenu()">✨</button>
+        <div class="anim-menu hidden" id="animMenu">
+            <div class="anim-option active" onclick="setAnimation('stars')">⭐ Stars</div>
+            <div class="anim-option" onclick="setAnimation('hearts')">💕 Floating Hearts</div>
+            <div class="anim-option" onclick="setAnimation('bubbles')">🫧 Chat Bubbles</div>
+            <div class="anim-option" onclick="setAnimation('particles')">✨ Light Particles</div>
+            <div class="anim-option" onclick="setAnimation('waves')">🌊 Gradient Waves</div>
+            <div class="anim-option" onclick="setAnimation('mixed')">🎨 All Mixed</div>
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <button class="back-btn" onclick="leaveRoom()">←</button>
+                <div class="user-info">
+                    <div class="user-avatar">💕</div>
+                    <div class="user-details">
+                        <span class="user-name">Cute Chat</span>
+                        <span class="user-status" id="connectionStatus">🟢 Connected</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn" title="Clear Chat" onclick="clearChat()">🗑️</button>
+            </div>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be loaded here -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator hidden" id="typingIndicator">
+            <span>Someone is typing...</span>
+        </div>
+
+        <!-- Message Input -->
+        <div class="message-input-area">
+            <div class="input-container">
+                <input type="text" id="messageInput" class="message-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)" autocomplete="off">
+                <button class="send-btn" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="animations.js"></script>
+    <script>
+        // Initialize animation system when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnimations('starCanvas');
+        });
+    </script>
+    <script src="chat-firebase.js"></script>
+</body>
+</html>
