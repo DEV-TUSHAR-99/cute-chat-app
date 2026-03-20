@@ -8,7 +8,7 @@ const firebaseConfig = {
     projectId: "chat-6b606",
     storageBucket: "chat-6b606.appspot.com",
     messagingSenderId: "704399140006",
-    appId: "1:704399140006:android:828d3e1b699e9bc6e2c067"
+    appId: "1:704399140006:web:828d3e1b699e9bc6e2c067"
 };
 
 // Initialize Firebase
