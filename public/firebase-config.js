@@ -7,8 +7,8 @@ const firebaseConfig = {
     databaseURL: "https://chat-6b606-default-rtdb.firebaseio.com",
     projectId: "chat-6b606",
     storageBucket: "chat-6b606.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    messagingSenderId: "704399140006",
+    appId: "1:704399140006:android:828d3e1b699e9bc6e2c067"
 };
 
 // Initialize Firebase
