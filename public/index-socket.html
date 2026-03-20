@@ -95,8 +95,8 @@
                     <span>or</span>
                 </div>
                 <div class="join-section">
-                    <input type="text" id="joinToken" placeholder="Enter token number..." class="input">
-                    <button class="btn btn-secondary" onclick="joinRoom()">
+                    <input type="text" id="joinLink" placeholder="Enter token number..." class="input">
+                    <button class="btn btn-secondary" onclick="joinFromLink()">
                         <span class="btn-icon">🔗</span>
                         Join Chat
                     </button>
@@ -112,7 +112,7 @@
                             <span id="copyText">Copy</span>
                         </button>
                     </div>
-                    <button class="btn btn-primary" onclick="enterChatRoom()">
+                    <button class="btn btn-primary" onclick="enterChat()">
                         Enter Chat Room →
                     </button>
                 </div>
@@ -120,10 +120,7 @@
         </div>
     </div>
     
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    <script src="firebase-config.js"></script>
+    <script src="config.js"></script>
     <script src="animations.js"></script>
     <script>
         // Initialize animation system when page loads
@@ -131,6 +128,6 @@
             initAnimations('starCanvas');
         });
     </script>
-    <script src="app-firebase.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

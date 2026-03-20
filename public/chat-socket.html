@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure private chat">
+    <!-- Prevent screenshots on some browsers -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>💕 Chat Room</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="chat-body">
+    <!-- Star Shower Background -->
+    <canvas id="starCanvas" class="star-canvas"></canvas>
+    
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span class="text" id="themeText">Dark</span>
+    </button>
+
+    <!-- Animation Selector -->
+    <div class="animation-selector" id="animationSelector">
+        <button class="anim-toggle" onclick="toggleAnimMenu()">✨</button>
+        <div class="anim-menu hidden" id="animMenu">
+            <div class="anim-option active" onclick="setAnimation('stars')">⭐ Stars</div>
+            <div class="anim-option" onclick="setAnimation('hearts')">💕 Floating Hearts</div>
+            <div class="anim-option" onclick="setAnimation('bubbles')">🫧 Chat Bubbles</div>
+            <div class="anim-option" onclick="setAnimation('particles')">✨ Light Particles</div>
+            <div class="anim-option" onclick="setAnimation('waves')">🌊 Gradient Waves</div>
+            <div class="anim-option" onclick="setAnimation('mixed')">🎨 All Mixed</div>
+        </div>
+    </div>
+    
+    <div class="chat-container">
+        <!-- Username Modal -->
+        <div id="usernameModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-icon">👋</span>
+                    <h2>Enter Your Name</h2>
+                </div>
+                <input type="text" id="usernameInput" placeholder="Your cute name..." maxlength="20" class="input">
+                <button class="btn btn-primary" onclick="setUsername()">
+                    Start Chatting 💕
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chat Interface -->
+        <div id="chatInterface" class="chat-interface hidden">
+            <div class="chat-header">
+                <div class="chat-info">
+                    <span class="status-dot"></span>
+                    <span class="chat-title">Private Chat</span>
+                    <span id="userCount" class="user-count">Waiting...</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn-icon-only" onclick="toggleProtectionInfo()" title="Security Info">🔒</button>
+                    <button class="btn-icon-only" onclick="leaveChat()" title="Leave Chat">✕</button>
+                </div>
+            </div>
+            
+            <div id="messagesContainer" class="messages-container">
+                <div class="system-message">
+                    <span class="system-icon">🔒</span>
+                    <span>Messages are encrypted and private</span>
+                </div>
+            </div>
+            
+            <div id="typingIndicator" class="typing-indicator hidden">
+                <span class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+                <span id="typingText">typing...</span>
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <button class="btn-emoji" onclick="toggleEmoji()">😊</button>
+                    <input type="text" id="messageInput" placeholder="Type a message..." maxlength="500" autocomplete="off">
+                    <button class="btn-send" onclick="sendMessage()">
+                        <span>➤</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Protection Info Modal -->
+        <div id="protectionModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-icon">🛡️</span>
+                    <h2>Security Features</h2>
+                </div>
+                <ul class="security-list">
+                    <li>🔒 End-to-end encrypted messages</li>
+                    <li>👥 Only 2 users allowed per room</li>
+                    <li>🚫 Screenshot detection enabled</li>
+                    <li>⏱️ Messages auto-delete after session</li>
+                    <li>🔗 Unique token for each session</li>
+                </ul>
+                <button class="btn btn-primary" onclick="closeProtectionInfo()">Got it!</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="config.js"></script>
+    <script src="animations.js"></script>
+    <script>
+        // Initialize animation system when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnimations('starCanvas');
+        });
+    </script>
+    <script src="chat.js"></script>
+</body>
+</html>
